@@ -154,3 +154,23 @@ plt.show()
 
 
 
+
+##### Looking at the consequences of increasing reularization strength.
+import numpy as np
+
+weights, params = [], []
+
+for c in np.arange(-5,5):
+    lr= LogisticRegression(C= 10.**c, random_state= 1, solver = 'lbfgs', multi_class = 'ovr')
+    lr.fit(X_train_STD, y_train)
+    weights.append((lr.coef_[1]))
+    params.append(10.**c)
+weights = np.array(weights)
+plt.plot(params, weights[:, 0], label = 'petal length')
+plt.plot(params, weights[: , 1], label = 'petal width', linestyle = '--')
+plt.ylabel('weight coefficient')
+plt.xlabel('C')
+plt.legend(loc = 'upper left')
+plt.xscale('log')
+plt.title('L2 regularization path for Iris, Petal length/width.')
+
