@@ -135,3 +135,22 @@ plt.show()
 
 
 
+
+
+#### using SKlearn Regression
+from sklearn.linear_model import LogisticRegression
+
+lr = LogisticRegression(C= 100.0, random_state= 1, solver= 'lbfgs', multi_class= 'ovr')
+
+lr.fit(X_train_STD, y_train)
+
+plot_decision_region(X_combined_std, y_combined, classifier= lr, test_idx= range(105, 150))
+plt.xlabel('petal length [standardized]')
+plt.ylabel('petal width [standardized]')
+plt.title('Logistic Regression Classifier')
+plt.tight_layout()
+plt.show()
+
+
+
+
