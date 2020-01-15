@@ -174,3 +174,50 @@ plt.legend(loc = 'upper left')
 plt.xscale('log')
 plt.title('L2 regularization path for Iris, Petal length/width.')
 
+##### creating data for the "Kennel methods.
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+np.random.seed(0)
+X_xor = np.random.randn(200, 2)
+y_xor = np.logical_xor(X_xor[:, 0] > 0,
+                       X_xor[:, 1] > 0)
+y_xor = np.where(y_xor, 1, -1)
+
+plt.scatter(X_xor[y_xor == 1, 0],
+            X_xor[y_xor == 1, 1],
+            c='b', marker='x',
+            label='1')
+plt.scatter(X_xor[y_xor == -1, 0],
+            X_xor[y_xor == -1, 1],
+            c='r',
+            marker='s',
+            label='-1')
+
+plt.xlim([-3, 3])
+plt.ylim([-3, 3])
+plt.legend(loc='best')
+plt.title('Synthetic data set')
+plt.tight_layout()
+# plt.savefig('./figures/xor.png', dpi=300)
+plt.show()
+
+
+######Create SVM using the "Kernel" method.##########
+from sklearn.svm import SVC
+
+svm = SVC(kernel='rbf', random_state=0, gamma=0.2, C=1.0)
+svm.fit(X_xor, y_xor)
+plot_decision_region(X_xor, y_xor,
+                      classifier=svm)
+
+plt.legend(loc='upper left')
+plt.tight_layout()
+
+# plt.savefig('./figures/support_vector_machine_rbf_xor.png', dpi=300)
+plt.show()
+
+
+
+
