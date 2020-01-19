@@ -154,6 +154,17 @@ plt.show()
 
 
 
+## K nearest neighbor
+
+from sklean.neighbors import KNeigh
+
+
+
+
+
+
+
+
 
 ##### Looking at the consequences of increasing reularization strength.
 import numpy as np
@@ -238,4 +249,25 @@ from sklearn import tree
 tree.plot_tree(tree_model)
 plt.show()
 
+
+
+
+
+
+
+
+
+#### K nearest neighbor
+
+from sklearn.neighbors import KNeighborsClassifier
+
+knn = KNeighborsClassifier(n_neighbors= 5 ,p=2, metric= 'minkowski')
+knn.fit(X_train_STD, y_train)
+plot_decision_region(X_train_STD, y_train, classifier= knn)
+plt.xlabel('petal length standardized')
+plt.ylabel('petal width standardized')
+plt.legend(loc = 'upper left')
+plt.title('K nearest neighbor decision for the Iris data set.')
+plt.tight_layout()
+plt.show()
 
