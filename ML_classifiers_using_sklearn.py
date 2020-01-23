@@ -154,10 +154,6 @@ plt.show()
 
 
 
-## K nearest neighbor
-
-from sklean.neighbors import KNeigh
-
 
 
 
@@ -248,6 +244,63 @@ plt.show()
 from sklearn import tree
 tree.plot_tree(tree_model)
 plt.show()
+
+#### Random forest classifier
+
+from sklearn.ensemble import RandomForestClassifier
+
+forest = RandomForestClassifier(criterion= 'gini', n_estimators= 25, random_state= 1, n_jobs = 2)
+forest.fit(X_train_STD, y_train)
+
+plot_decision_region(X_train_STD, y_train, classifier= forest)
+plt.xlabel("Petal length cm",
+           fontdict={'family': 'serif',
+                     'color': 'darkred',
+                     'weight': 'normal',
+                     'size': 16}
+           )
+plt.ylabel("petal width cm",
+           fontdict={'family': 'serif',
+                     'color': 'darkred',
+                     'weight': 'normal',
+                     'size': 16}
+           )
+plt.legend(loc= "upper_left")
+plt.title("Random Forest on the Iris data set.",
+          fontdict= {'family': 'serif',
+                            'color':  'darkred',
+                            'weight': 'normal',
+                            'size': 16})
+
+plt.tight_layout()
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
